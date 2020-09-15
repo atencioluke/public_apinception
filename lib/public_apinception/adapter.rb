@@ -1,4 +1,5 @@
-require_relative '../public_apinception'
+require_relative '../public_apinception.rb'
+require_relative './category.rb'
 class PublicApinception::Adapter
     @@BASE_URL = "https://api.publicapis.org"
 
@@ -12,9 +13,15 @@ class PublicApinception::Adapter
         PublicApinception::Category.new_from_array(self.get_categories)
     end
 
-    def get_apis(input)
-        response = Net::HTTP.get_response(URI.parse(@@BASE_URL + "/entries?category=#{input}&https=true"))
-        categories = JSON.parse(response.body)
+    def get_apis
+        response = Net::HTTP.get_response(URI.parse(@@BASE_URL + "/entries"))
+        # response = Net::HTTP.get_response(URI.parse(@@BASE_URL + "/entries?category=#{input}&https=true"))
+        data = JSON.parse(response.body)
+        apis = data["entries"]
+        binding.pry
+    end
+
+    def create_apis
     end
 
     def initialize
@@ -29,3 +36,5 @@ class PublicApinception::Adapter
     #     final = JSON.parse(response.body)
     # end
 end
+
+# PublicApinception::Adapter.new.get_apis("animals")
