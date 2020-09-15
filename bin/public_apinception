@@ -2,4 +2,3 @@
 require_relative '../lib/public_apinception'
 
 PublicApinception::CLI.new.call
-# PublicApinception::Adapter.new.get_apis("animals")

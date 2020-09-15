@@ -10,6 +10,7 @@ class PublicApinception::API
         @cors = cors
         @link = link
         @category = category
+
         @@all << self
     end
 
@@ -17,11 +18,11 @@ class PublicApinception::API
         @@all
     end
 
-    def self.titles
-        self.all.map {|api| api.title }
+    def self.find_by_category(input)
+        self.all.select {|api| api.title == input}
     end
 
     def self.categories
-        self.all.map {|api| api.category }.uniq
+        all.map { |api| api.category }.uniq
     end
 end

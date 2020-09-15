@@ -1,10 +1,10 @@
 class PublicApinception::CLI
-    attr_accessor :categories
+    attr_accessor :categories, :ascii, :prompt
 
     def initialize
         t1 = Thread.new do
             @ascii = PublicApinception::ASCIIIMAGES.new
-            @ascii.load_screen
+            ascii.load_screen
         end
 
         t2 = Thread.new do
@@ -14,7 +14,6 @@ class PublicApinception::CLI
         end
 
         t1.join
-        
     end
 
     def call
@@ -32,29 +31,28 @@ class PublicApinception::CLI
 
     def list_categories
         # PublicApinception::Category.all.map {|c| c.category }
-        input = list(categories)
-        list_apis(input)
-        puts input
-        # case input
-        # when "Animals"
-        #     puts "animals!"
-        # when "Exit"
-        #     exit
-        # end
-        # binding.pry
+        input = list(@categories)
+
+        if input == "Exit"
+            exit
+        else
+            list_apis(input)
+        end
     end
 
     def list_apis(input)
-        
+        apis = PublicApinception::API.all.select {|api| api.category == input}
+        titles = apis.each {|api| api.title}
+        list(apis)
     end
 
     def list(options)
         options << "Exit"
-        input = @prompt.select("Select an option using the arrow keys and press enter.", options, cycle: true)
+        input = prompt.select("Select an option using the arrow keys and press enter. (↑/↓ navigate options, ←/→ navigate pages)", options, cycle: true)
     end
 
     def exit
-        @ascii.load_screen
+        ascii.load_screen
         puts "It's been real, it's been good, but it hasn't been real good."
     end
 end
