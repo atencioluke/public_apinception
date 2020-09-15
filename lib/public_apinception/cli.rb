@@ -41,9 +41,32 @@ class PublicApinception::CLI
     end
 
     def list_apis(input)
-        apis = PublicApinception::API.all.select {|api| api.category == input}
-        titles = apis.each {|api| api.title}
+        apis = PublicApinception::API.title_by_category(input)
+        apis << "Go back to categories"
         list(apis)
+
+        if input == "Exit"
+            exit
+        elsif input == "Go back to categories"
+            list_categories
+        else
+            api_info(input)
+        end
+    end
+    
+    def api_info(input)
+        info = PublicApinception::API.find_by_title(input)
+
+        selection = <<~HERE
+        Title: 
+        Description: 
+        Auth_type: 
+        HTTPS: 
+        Cors: 
+        Link: 
+        Category: 
+        HERE
+        
     end
 
     def list(options)

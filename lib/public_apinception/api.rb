@@ -18,7 +18,12 @@ class PublicApinception::API
         @@all
     end
 
-    def self.find_by_category(input)
+    def self.title_by_category(input)
+        apis = self.all.select {|api| api.category == input}
+        apis.map { |api| api.title }
+    end
+
+    def self.find_by_title(input)
         self.all.select {|api| api.title == input}
     end
 
