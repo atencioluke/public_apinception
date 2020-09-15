@@ -43,20 +43,21 @@ class PublicApinception::CLI
     def list_apis(input)
         apis = PublicApinception::API.title_by_category(input)
         apis << "Go back to categories"
-        list(apis)
+        choice = list(apis)
 
-        if input == "Exit"
+        if choice == "Exit"
             exit
-        elsif input == "Go back to categories"
+        elsif choice == "Go back to categories"
             list_categories
         else
-            api_info(input)
+            api_info(choice)
         end
     end
     
     def api_info(input)
         info = PublicApinception::API.find_by_title(input)
 
+        binding.pry
         selection = <<~HERE
         Title: 
         Description: 
@@ -71,7 +72,7 @@ class PublicApinception::CLI
 
     def list(options)
         options << "Exit"
-        input = prompt.select("Select an option using the arrow keys and press enter. (↑/↓ navigate options, ←/→ navigate pages)", options, cycle: true)
+        input = prompt.select("Select an option using the arrow keys and press enter, and letter keys to filter. (↑/↓ navigate options, ←/→ navigate pages)", options, cycle: true, per_page: 10, filter: true)
     end
 
     def exit

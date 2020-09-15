@@ -24,7 +24,7 @@ class PublicApinception::API
     end
 
     def self.find_by_title(input)
-        self.all.select {|api| api.title == input}
+        self.all.find {|api| api.title.downcase == input.downcase}
     end
 
     def self.categories
