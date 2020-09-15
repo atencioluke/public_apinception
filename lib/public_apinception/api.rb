@@ -1,4 +1,7 @@
 class PublicApinception::API
+    attr_reader :title, :description, :auth_type, :https, :cors, :link, :category
+    @@all = []
+
     def initialize(title=nil, description=nil, auth_type=nil, https=nil, cors=nil, link=nil, category=nil)
         @title = title
         @description = description
@@ -7,9 +10,18 @@ class PublicApinception::API
         @cors = cors
         @link = link
         @category = category
+        @@all << self
     end
 
-    def new_from_hash()
-        
+    def self.all
+        @@all
+    end
+
+    def self.titles
+        self.all.map {|api| api.title }
+    end
+
+    def self.categories
+        self.all.map {|api| api.category }.uniq
     end
 end

@@ -15,13 +15,21 @@ class PublicApinception::Adapter
 
     def get_apis
         response = Net::HTTP.get_response(URI.parse(@@BASE_URL + "/entries"))
-        # response = Net::HTTP.get_response(URI.parse(@@BASE_URL + "/entries?category=#{input}&https=true"))
         data = JSON.parse(response.body)
         apis = data["entries"]
-        binding.pry
     end
 
     def create_apis
+        get_apis.each do |api|
+            title = api["API"]
+            description = api["Description"]
+            auth_type = api["Auth"]
+            https = api["HTTPS"]
+            cors = api["Cors"]
+            link = api["Link"]
+            category = api["Category"]
+            PublicApinception::API.new(title, description, auth_type, https, cors, link, category)
+        end
     end
 
     def initialize
