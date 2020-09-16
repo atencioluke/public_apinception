@@ -29,4 +29,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "tty-prompt"
+  spec.add_dependency "rake", "~> 12.0"
+  spec.add_dependency "rspec", "~> 3.0"
+  spec.add_dependency 'pry'
+  spec.add_dependency 'nokogiri', '1.10.8'
 end

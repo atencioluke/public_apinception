@@ -1,5 +1,3 @@
-# require_relative '../public_apinception.rb'
-# require_relative './category.rb'
 class PublicApinception::Adapter
     @@BASE_URL = "https://api.publicapis.org"
     

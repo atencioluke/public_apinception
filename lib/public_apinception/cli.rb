@@ -2,8 +2,9 @@ class PublicApinception::CLI
     attr_accessor :categories, :ascii, :prompt
 
     def initialize
-        # upon initializing, two threads will start, giving a loading screen animation
-        # and resizing window, while also loading data from API and creating objects
+        # upon initializing, two threads will start
+        # t1 gives a loading screen animation and resizing window
+        # t2 loads data from API and creates objects
 
         t1 = Thread.new do
             system "printf '\e[8;50;130t'"
