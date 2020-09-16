@@ -49,19 +49,29 @@ class PublicApinception::CLI
         clear
         puts ascii.title_screen
         apis = PublicApinception::API.title_by_category(input)
-        choice = end_menu(apis)
+        choice = api_list_menu(apis)
 
         toggle(choice) || api_info(choice, input)
     end
 
-    def toggle(input)
-        # Used to determine if user input was exit or navigate to Categories
+    def toggle(input,api_link=nil)
+        # Used to determine if user input was exit, navigate to Categories, or to open API homepage
 
         if input == "Exit"
             exit
         elsif input == "Go back to Categories"
             list_categories
+        elsif input == "Open API homepage" && !api_link.nil?
+            open_api_link(api_link)
+            api = PublicApinception::API.find_by_link(api_link)
+            api_title = api.title
+            api_category = api.category
+            api_info(api_title, api_category)
         end
+    end
+    
+    def open_api_link(api_link)
+        system "open #{api_link}"
     end
     
     def api_info(input, previous_choice)
@@ -94,7 +104,7 @@ class PublicApinception::CLI
                      Details
         +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-        Auth_type:   #{info.auth_type == "" ? "N/A" : info.auth_type }
+        Auth_type:   #{info.auth_type == "" ? "None" : info.auth_type }
         HTTPS:       #{info.https}
         Cors:        #{info.cors}
         Link:        #{info.link}
@@ -105,14 +115,21 @@ class PublicApinception::CLI
         puts selection
         choice = end_menu(previous_choice)
 
-        toggle(choice) || list_apis(choice)
+        toggle(choice,info.link) || list_apis(choice)
 
+    end
+
+    def api_list_menu(other_options)
+        # adds Go back to categories option to list for api list and api info menus
+
+        options = ["Go back to Categories", other_options]
+
+        input = list(options)
     end
 
     def end_menu(other_options)
         # adds Go back to categories option to list for api list and api info menus
-
-        options = ["Go back to Categories", other_options]
+        options = ["Open API homepage", other_options]
 
         input = list(options)
     end

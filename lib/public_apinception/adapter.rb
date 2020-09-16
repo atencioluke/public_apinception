@@ -1,6 +1,7 @@
 class PublicApinception::Adapter
     @@BASE_URL = "https://api.publicapis.org"
     
+    # When PublicApinception::Adapter.new create apis and categories, using APIs as categories source of truth
     def initialize
         create_apis
         create_categories
@@ -27,6 +28,7 @@ class PublicApinception::Adapter
         end
     end
 
+    # uses APIs class as source of truth Category creation
     def create_categories
         PublicApinception::Category.new_from_array(PublicApinception::API.categories)
     end

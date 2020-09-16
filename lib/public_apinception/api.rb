@@ -24,7 +24,11 @@ class PublicApinception::API
     end
 
     def self.find_by_title(input)
-        self.all.find {|api| api.title.downcase == input.downcase}
+        self.all.find {|api| api.title == input}
+    end
+
+    def self.find_by_link(input)
+        self.all.find {|api| api.link == input}
     end
 
     def self.categories
