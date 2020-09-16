@@ -1,8 +1,6 @@
 # PublicApinception
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/public_apinception`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Sometimes you want to start a project involving an API, but you don't want to mess around with getting a key. This is where Public APInception saves the day! Using the Public APIs API, you can search for exactly what kind of public API you need!
 
 ## Installation
 
@@ -22,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Running this file will start the CLI
+
+    $ bin/public_apinception
+
+ You start with a list of categories of APIs to choose from. Once you choose a category you will be shown the APIs in that category. Once you have chosen an API to view, the info will be displayed along with some options including Go back to categories, Open API link, and Exit. 
+
+ Have a great project!
 
 ## Development
 

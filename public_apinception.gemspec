@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["atencioluke@gmail.com"]
 
   spec.summary       = %q{This gem allows you to search through Public APIs for project ideas!}
-  spec.description   = %q{Sometimes you want to start a project involving an API, but you don't want to mess around with getting a key. This is where Public APInception saves the day! Using the Public APIs API, you can search for exactly what kind of free, public API you need!}
+  spec.description   = %q{Sometimes you want to start a project involving an API, but you don't want to mess around with getting a key. This is where Public APInception saves the day! Using the Public APIs API, you can search for exactly what kind of public API you need!}
   spec.homepage      = "https://github.com/atencioluke/public_apinception"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
