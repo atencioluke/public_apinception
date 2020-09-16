@@ -4,6 +4,7 @@ require 'json'
 require 'open-uri'
 require 'awesome_print'
 require "tty-prompt"
+require "tty-link"
 
 require_relative '../lib/public_apinception/cli'
 require_relative '../lib/public_apinception/adapter'
