@@ -39,6 +39,11 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 Bug reports and pull requests are welcome on GitHub at https://github.com/atencioluke/public_apinception. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/atencioluke/public_apinception/blob/master/CODE_OF_CONDUCT.md).
 
 
+## Authors
+
+* **Luke Atencio**
+
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
@@ -46,3 +51,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the PublicApinception project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/atencioluke/public_apinception/blob/master/CODE_OF_CONDUCT.md).
+
+## Acknowledgements
+
+* [davemachado](https://github.com/davemachado) - Building the Public APIs API
+* The team over at [public-apis](https://github.com/public-apis) - Collecting all of this API info
+* [piotrmurach](https://github.com/piotrmurach) - TTY made the CLI navigation so much more seemless
