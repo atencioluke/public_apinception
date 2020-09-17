@@ -41,6 +41,21 @@ class PublicApinception::ASCIIIMAGES
     clear
     puts @api_logo
   end  
+
+  def api_title
+    puts @api_title
+  end
+
+  def api_description
+    puts @api_description
+  end
+
+  def api_details
+    puts @api_details
+  end
+
+
+
   
   def initialize
         @loading = []
@@ -55,6 +70,29 @@ class PublicApinception::ASCIIIMAGES
       ██║  ██║██║     ██║
       ╚═╝  ╚═╝╚═╝     ╚═╝
                          
+      HERE
+
+      @api_title = <<~HERE
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                      Title
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+      HERE
+
+      @api_description = <<~HERE
+
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                  Description
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+      HERE
+
+      @api_details = <<~HERE
+
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                   Details
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
       HERE
         
         @intro << <<~HERE

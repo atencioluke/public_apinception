@@ -74,23 +74,12 @@ class PublicApinception::CLI
         ascii.api_header
         info = PublicApinception::API.find_by_title(input)
 
+        ascii.api_title
+        puts info.title
+        ascii.api_description
+        puts info.description
+
         selection = <<~HERE
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                      Title
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-        #{info.title}
-
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                    Description
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-        #{info.description}
-
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                     Details
-        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
         Auth_type:   #{info.auth_type == "" ? "None" : info.auth_type }
         HTTPS:       #{info.https}
         Cors:        #{info.cors}
@@ -100,7 +89,6 @@ class PublicApinception::CLI
         HERE
 
         puts selection
-
         choice = end_menu(previous_choice)
 
         toggle(choice,info.link) || list_apis(choice)
