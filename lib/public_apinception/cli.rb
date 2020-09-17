@@ -10,7 +10,6 @@ class PublicApinception::CLI
             @ascii = PublicApinception::ASCIIIMAGES.new
             ascii.load_screen
         end
-        
         t2 = Thread.new do
             @prompt = TTY::Prompt.new
             PublicApinception::Adapter.new
@@ -31,34 +30,18 @@ class PublicApinception::CLI
     def list_categories
         header
         input = list(@categories)
-        input == "Exit" ? exit : list_apis(input)
-    end
-
-    # clears console 
-    def clear
-        ascii.clear
+        toggle(input) || list_apis(input)
     end
 
     # formats screen and displays API titles
     def list_apis(input)
-        clear
-        puts ascii.title_screen
+        ascii.title_screen
         apis = PublicApinception::API.title_by_category(input)
         choice = api_list_menu(apis)
-
+        
         toggle(choice) || api_info(choice, input)
     end
-
-    # Used to determine selected options and actions needed to get to next page
-    def toggle(input,api_link=nil)
-        if input == "Exit"
-            exit
-        elsif input == "Go back to Categories"
-            list_categories
-        elsif input == "Open API homepage" && !api_link.nil?
-            open_api_link(api_link)
-        end
-    end
+    
     
     # Opens API link and restates current API selection/menu
     def open_api_link(api_link)
@@ -73,54 +56,67 @@ class PublicApinception::CLI
     def api_info(input, previous_choice)
         ascii.api_header
         info = PublicApinception::API.find_by_title(input)
-
+        
         ascii.api_title
         puts info.title
         ascii.api_description
         puts info.description
-
+        
         selection = <<~HERE
         Auth_type:   #{info.auth_type == "" ? "None" : info.auth_type }
         HTTPS:       #{info.https}
         Cors:        #{info.cors}
         Link:        #{info.link}
         Category:    #{info.category}
-
+        
         HERE
-
         puts selection
         choice = end_menu(previous_choice)
-
+        
         toggle(choice,info.link) || list_apis(choice)
-
     end
-
+    
+    
+    ######################################## MENU/LIST METHODS ########################################
+    
     # adds Go back to categories option to list for api list and api info menus
     def api_list_menu(other_options)
-
         options = ["Go back to Categories", other_options]
-
         input = list(options)
     end
-
+    
     # adds Go back to categories option to list for api list and api info menus
     def end_menu(other_options)
         options = ["Open API homepage", other_options]
-
         input = list(options)
     end
-
-    # formats header to sit above text
-    def header
-        ascii.title_screen
-    end
-
+    
     # Navigation menu that lists options
     def list(options)
         options.include?("Exit") || options << "Exit"
         input = prompt.select(ascii.directions, options, cycle: true, per_page: 10, filter: true)
     end
+    
+    # Used to determine selected options and actions needed to get to next page
+    def toggle(input,api_link=nil)
+        return exit if input == "Exit"
+        return list_categories if input == "Go back to Categories"
+        return open_api_link(api_link) if input == "Open API homepage" && !api_link.nil?
+    end
+    
+    
+    ###################################### FORMATTING METHODS #######################################
+    
+    # formats header to sit above text
+    def header
+        ascii.title_screen
+    end
 
+    # clears console 
+    def clear
+        ascii.clear
+    end
+    
     # Gives randomized exit screen and closes program
     def exit
         clear

@@ -2,6 +2,8 @@
 # for this project, along with methods that allow the images/animations to be called
 
 class PublicApinception::ASCIIIMAGES
+  
+  # load screen animation
   def load_screen
       i = 0
       while i < 23
@@ -13,6 +15,7 @@ class PublicApinception::ASCIIIMAGES
       clear
   end
 
+  # welcome screen animation
   def welcome_screen
       @intro.each do |i|
           clear
@@ -21,47 +24,53 @@ class PublicApinception::ASCIIIMAGES
       end
   end
 
+  # Title Screen used as header for most of CLI
   def title_screen
     clear
     puts @intro.last
   end
   
+  # directions image and instructions for menu navigation
   def directions
     @directions
   end
-
-
+  
+  # randomized exit screen from array of images/messages
+  def exit_screen
+    puts @exit_screen.sample
+  end
+  
+  # API header for use at top of API info
+  def api_header
+    clear
+    puts @api_logo
+  end  
+  
+  # API title label for API info page
+  def api_title
+    puts @api_title
+  end
+  
+  # API description label for API info page
+  def api_description
+    puts @api_description
+  end
+  
+  # API details label for API info page
+  def api_details
+    puts @api_details
+  end
+  
+  # clears terminal for formatting purposes, also used in cli.rb
   def clear
     system "clear"
   end
 
 
-
-
-  def exit_screen
-    puts @exit_screen.sample
-  end
-
-  def api_header
-    clear
-    puts @api_logo
-  end  
-
-  def api_title
-    puts @api_title
-  end
-
-  def api_description
-    puts @api_description
-  end
-
-  def api_details
-    puts @api_details
-  end
-
-
-
   
+  # Upon creating new instance of ASCIIIMAGES class arrays for
+  # animations, still images, and randomized exit screen
+  # arrays created. Assigns all images and arrays to instance variables
   def initialize
         @loading = []
         @intro = []
