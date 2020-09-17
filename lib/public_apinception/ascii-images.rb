@@ -2,14 +2,6 @@
 # for this project, along with methods that allow the images/animations to be called
 
 class PublicApinception::ASCIIIMAGES
-  def directions
-    @directions
-  end
-
-  def clear
-    system "clear"
-  end
-
   def load_screen
       i = 0
       while i < 23
@@ -30,8 +22,21 @@ class PublicApinception::ASCIIIMAGES
   end
 
   def title_screen
+    clear
     puts @intro.last
   end
+  
+  def directions
+    @directions
+  end
+
+
+  def clear
+    system "clear"
+  end
+
+
+
 
   def exit_screen
     puts @exit_screen.sample

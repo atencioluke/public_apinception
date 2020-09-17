@@ -6,7 +6,7 @@ class PublicApinception::CLI
     # t2 loads data from API and creates objects
     def initialize
         t1 = Thread.new do
-            system "printf '\e[8;50;130t'" #resizes window
+            system "printf '\e[8;50;130t'" #resizes window xterm
             @ascii = PublicApinception::ASCIIIMAGES.new
             ascii.load_screen
         end
@@ -112,8 +112,7 @@ class PublicApinception::CLI
 
     # formats header to sit above text
     def header
-        clear
-        puts ascii.title_screen
+        ascii.title_screen
     end
 
     # Navigation menu that lists options
