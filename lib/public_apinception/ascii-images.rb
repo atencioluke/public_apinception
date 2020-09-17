@@ -247,9 +247,9 @@ class PublicApinception::ASCIIIMAGES
         ███████║███████╗███████╗███████╗╚██████╗   ██║       ██║  ██║██║ ╚████║    ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║╚═╝
         ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝       ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   
                                                                                                                                       
-        Use the ⬆ /⬇ keys to navigate options and ⬅ /⮕ keys to navigate pages
-        You can filter by typing what you want (e.g.Typing "Cat" will give you Cats & Cat Facts).
-        Press enter to confirm your selection.
+        Use the ⬆ /⬇ keys to navigate options and ⬅ /⮕ keys to navigate pages.
+        You can filter by typing what you want (e.g. Typing "Cat" will give you Cats & Cat Facts).
+        Press Enter to confirm your selection.
         +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
         HERE
 
