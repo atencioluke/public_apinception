@@ -1,9 +1,62 @@
+# This file contains the major ASCII images and animations used for
+# for this project, along with methods that allow the images/animations to be called
+
 class PublicApinception::ASCIIIMAGES
-    def initialize
+  def directions
+    @directions
+  end
+
+  def clear
+    system "clear"
+  end
+
+  def load_screen
+      i = 0
+      while i < 23
+          clear
+          puts @loading[i]
+          sleep(0.1)
+          i += 1
+      end
+      clear
+  end
+
+  def welcome_screen
+      @intro.each do |i|
+          clear
+          puts i
+          sleep(0.5)
+      end
+  end
+
+  def title_screen
+    puts @intro.last
+  end
+
+  def exit_screen
+    puts @exit_screen.sample
+  end
+
+  def api_header
+    clear
+    puts @api_logo
+  end  
+  
+  def initialize
         @loading = []
         @intro = []
         @exit_screen = []
 
+        @api_logo = <<~HERE
+       █████╗ ██████╗ ██╗
+      ██╔══██╗██╔══██╗██║
+      ███████║██████╔╝██║
+      ██╔══██║██╔═══╝ ██║
+      ██║  ██║██║     ██║
+      ╚═╝  ╚═╝╚═╝     ╚═╝
+                         
+      HERE
+        
         @intro << <<~HERE
         ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
         ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
@@ -123,7 +176,7 @@ class PublicApinception::ASCIIIMAGES
 
 
 
-                  
+
                                                                                               
  ██╗    ██╗  ██╗██╗██████╗     ██╗  ██╗██╗██████╗      █████╗ ██████╗ ██████╗  █████╗ ██╗   ██╗██╗    ██╗ 
 ██╔╝    ██║  ██║██║██╔══██╗    ██║  ██║██║██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██║    ╚██╗
@@ -144,6 +197,24 @@ class PublicApinception::ASCIIIMAGES
         ╚═╝  ╚═╝╚══════╝       ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚══════╝╚═╝  ╚═╝╚═╝
                                                                                                 
         HERE
+
+        @directions = <<~HERE
+        
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        
+        ███████╗███████╗██╗     ███████╗ ██████╗████████╗     █████╗ ███╗   ██╗     ██████╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗   
+        ██╔════╝██╔════╝██║     ██╔════╝██╔════╝╚══██╔══╝    ██╔══██╗████╗  ██║    ██╔═══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██╗
+        ███████╗█████╗  ██║     █████╗  ██║        ██║       ███████║██╔██╗ ██║    ██║   ██║██████╔╝   ██║   ██║██║   ██║██╔██╗ ██║╚═╝
+        ╚════██║██╔══╝  ██║     ██╔══╝  ██║        ██║       ██╔══██║██║╚██╗██║    ██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║██╗
+        ███████║███████╗███████╗███████╗╚██████╗   ██║       ██║  ██║██║ ╚████║    ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║╚═╝
+        ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝       ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   
+                                                                                                                                      
+        Use the ⬆ /⬇ keys to navigate options and ⬅ /⮕ keys to navigate pages
+        You can filter by typing what you want (e.g.Typing "Cat" will give you Cats & Cat Facts).
+        Press enter to confirm your selection.
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        HERE
+
         @loading << <<~HERE
 
                                                                                                     
@@ -1391,30 +1462,5 @@ HERE
         HERE
     end
 
-    def load_screen
-        i = 0
-        while i < 23
-            system "clear"
-            puts @loading[i]
-            sleep(0.1)
-            i += 1
-        end
-        system "clear"
-    end
-
-    def welcome_screen
-        @intro.each do |i|
-            system "clear"
-            puts i
-            sleep(0.5)
-        end
-    end
-
-    def title_screen
-      puts @intro.last
-    end
-
-    def exit_screen
-      puts @exit_screen.sample
-    end
+    
 end

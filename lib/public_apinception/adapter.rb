@@ -30,7 +30,8 @@ class PublicApinception::Adapter
 
     # uses APIs class as source of truth Category creation
     def create_categories
-        PublicApinception::Category.new_from_array(PublicApinception::API.categories)
+        categories = PublicApinception::API.all.map { |api| api.category }.uniq
+        PublicApinception::Category.new_from_array(categories)
     end
 
 end
