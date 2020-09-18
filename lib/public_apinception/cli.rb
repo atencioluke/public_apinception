@@ -61,6 +61,7 @@ class PublicApinception::CLI
         puts info.title
         ascii.api_description
         puts info.description
+        ascii.api_details
         
         selection = <<~HERE
         Auth_type:   #{info.auth_type == "" ? "None" : info.auth_type }
